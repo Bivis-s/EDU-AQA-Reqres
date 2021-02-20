@@ -1,8 +1,9 @@
-package objects;
+package objects.responses;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Builder;
 import lombok.Data;
+import objects.support.Support;
 
 import java.util.List;
 

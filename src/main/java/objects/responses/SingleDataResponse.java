@@ -1,7 +1,8 @@
-package objects;
+package objects.responses;
 
 import lombok.Builder;
 import lombok.Data;
+import objects.support.Support;
 
 @Data
 @Builder

@@ -5,7 +5,7 @@ import lombok.Data;
 
 @Data
 @Builder
-public class RegisterResponse {
+public class RegisterLoginResponse {
     private int id;
     private String token;
 }

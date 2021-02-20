@@ -1,4 +1,4 @@
-package objects;
+package objects.support;
 
 import lombok.Builder;
 import lombok.Data;
