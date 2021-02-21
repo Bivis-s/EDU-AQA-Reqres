@@ -3,9 +3,9 @@ package values;
 import java.io.File;
 
 public class Values {
-    private static final String EXPECTED_RESPONSES_PATH = "src/test/resources/expected_responses/";
+    private static final String EXPECTED_RESPONSES_PATH = "src/test/resources/jsons/expected_responses/";
     public static final File EXPECTED_LIST_USERS_RESPONSE_JSON = new File(EXPECTED_RESPONSES_PATH + "list_users.json");
-    public static final File EXPECTED_SINGLE_USER_RESPONSE_JSON = new File(EXPECTED_RESPONSES_PATH + "list_users.json");
+    public static final File EXPECTED_SINGLE_USER_RESPONSE_JSON = new File(EXPECTED_RESPONSES_PATH + "single_user.json");
     public static final File EXPECTED_LIST_RESOURCE_RESPONSE_JSON = new File(EXPECTED_RESPONSES_PATH + "list_resource.json");
     public static final File EXPECTED_SINGLE_RESOURCE_RESPONSE_JSON = new File(EXPECTED_RESPONSES_PATH + "single_resource.json");
     public static final File EXPECTED_REGISTER_RESPONSE_JSON = new File(EXPECTED_RESPONSES_PATH + "register.json");
