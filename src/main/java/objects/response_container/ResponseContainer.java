@@ -1,11 +1,17 @@
 package objects.response_container;
 
 import lombok.AllArgsConstructor;
-import lombok.Data;
+import lombok.Value;
+import lombok.extern.log4j.Log4j2;
 
-@Data
+@Value
 @AllArgsConstructor
+@Log4j2
 public class ResponseContainer<T> {
-    private int statusCode;
-    private T data;
+    int statusCode;
+    T data;
+
+    {
+        log.debug("Created " + this.getClass().getSimpleName() + " object, " + this.toString());
+    }
 }
