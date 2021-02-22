@@ -36,6 +36,18 @@ public class ReqresAdapter extends BaseAdapter {
     }
 
     /**
+     * Returns ResponseContainer of 'get delayed user list' request
+     *
+     * @return ResponseContainer containing response status code and DataListResponse&lt;User&gt; object
+     */
+    @Step("Get user list, page: '{page}'")
+    public ResponseContainer<DataListResponse<User>> getDelayedUserList(int delay) {
+        log.info("Get delayed user list, delay: " + delay);
+        Response response = super.get(String.format(GET_DELAYED_USER_LIST_REQUEST_URL, delay));
+        return new ResponseContainer<>(response.statusCode(), createDataUserList(response.body().asString()));
+    }
+
+    /**
      * Returns ResponseContainer of 'get single user' request
      *
      * @param userId requested user id

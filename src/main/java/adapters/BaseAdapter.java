@@ -54,6 +54,7 @@ public class BaseAdapter {
     public Response post(String requestUrl, String requestBody) {
         log.info("Send post request with body '" + requestBody + "' to URL: " + requestUrl);
         return given()
+                .header("Content-Type", "application/json")
                 .body(requestBody)
                 .when()
                 .post(requestUrl)
@@ -70,6 +71,7 @@ public class BaseAdapter {
     public Response put(String requestUrl, String requestBody) {
         log.info("Send put request with body '" + requestBody + "' to URL: " + requestUrl);
         return given()
+                .header("Content-Type", "application/json")
                 .body(requestBody)
                 .when()
                 .put(requestUrl)
@@ -86,6 +88,7 @@ public class BaseAdapter {
     public Response patch(String requestUrl, String requestBody) {
         log.info("Send patch request with body '" + requestBody + "' to URL: " + requestUrl);
         return given()
+                .header("Content-Type", "application/json")
                 .body(requestBody)
                 .when()
                 .patch(requestUrl)

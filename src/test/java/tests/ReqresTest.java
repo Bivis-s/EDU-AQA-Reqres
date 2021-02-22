@@ -30,6 +30,11 @@ public class ReqresTest {
         assertResponseStatusCode(adapter.getUserList(2), EXPECTED_LIST_USER_STATUS_CODE);
     }
 
+    @Test(description = "Get delayed user list with delay = 5", groups = {"positive", "performance"})
+    public void getDelayedUserList() {
+        assertResponseStatusCode(adapter.getDelayedUserList(5), EXPECTED_LIST_USER_STATUS_CODE);
+    }
+
     @Test(description = "Get user list on page 2 response body test", groups = "positive")
     public void getUserListResponseBodyTest() throws FileNotFoundException {
         assertResponseBodyData(adapter.getUserList(2).getData(),
@@ -108,14 +113,14 @@ public class ReqresTest {
     public void registerWithValidDataResponseStatusCodeTest() throws FileNotFoundException {
         assertResponseStatusCode(adapter.postRegister(createEmailPasswordRequest(REGISTER_SUCCESSFUL_REQUEST_JSON)),
                 EXPECTED_REGISTER_SUCCESSFUL_STATUS_CODE);
-    } //TODO ПОЧЕМУ НЕ РАБОТАЕТ?
+    }
 
     @Test(description = "Register with valid data and assert response body test", groups = "positive")
     public void registerWithValidDataResponseBodyTest() throws FileNotFoundException {
         assertResponseBodyData(adapter
                         .postRegister(createEmailPasswordRequest(REGISTER_SUCCESSFUL_REQUEST_JSON)).getData(),
                 createRegisterLoginResponse(EXPECTED_REGISTER_RESPONSE_JSON));
-    } //TODO ПОЧЕМУ НЕ РАБОТАЕТ?
+    }
 
     @Test(description = "Register without password data and assert response status code test", groups = "negative")
     public void registerWithoutPasswordResponseStatusCodeTest() throws FileNotFoundException {
@@ -123,5 +128,22 @@ public class ReqresTest {
                 EXPECTED_REGISTER_UNSUCCESSFUL_STATUS_CODE);
     }
 
+    @Test(description = "Login with valid data and assert response status code test", groups = "positive")
+    public void loginWithValidDataResponseStatusCodeTest() throws FileNotFoundException {
+        assertResponseStatusCode(adapter.postLogin(createEmailPasswordRequest(LOGIN_SUCCESSFUL_REQUEST_JSON)),
+                EXPECTED_LOGIN_SUCCESSFUL_STATUS_CODE);
+    }
 
+    @Test(description = "Login with valid data and assert response body test", groups = "positive")
+    public void loginWithValidDataResponseBodyTest() throws FileNotFoundException {
+        assertResponseBodyData(adapter
+                        .postLogin(createEmailPasswordRequest(LOGIN_SUCCESSFUL_REQUEST_JSON)).getData(),
+                createRegisterLoginResponse(EXPECTED_LOGIN_RESPONSE_JSON));
+    }
+
+    @Test(description = "Login without password data and assert response status code test", groups = "negative")
+    public void loginWithoutPasswordResponseStatusCodeTest() throws FileNotFoundException {
+        assertResponseStatusCode(adapter.postLogin(createEmailPasswordRequest(LOGIN_UNSUCCESSFUL_REQUEST_JSON)),
+                EXPECTED_LOGIN_UNSUCCESSFUL_STATUS_CODE);
+    }
 }
