@@ -1,4 +1,4 @@
-package objects.response_container;
+package objects.responses;
 
 import lombok.AllArgsConstructor;
 import lombok.Value;
@@ -7,7 +7,7 @@ import lombok.extern.log4j.Log4j2;
 @Value
 @AllArgsConstructor
 @Log4j2
-public class ResponseContainer<T> {
+public class ResponseContainer<T extends ResponseData> {
     int statusCode;
     T data;
 

@@ -1,4 +1,4 @@
-package objects.users;
+package objects.responses.data_containing.data;
 
 import com.google.gson.annotations.SerializedName;
 import lombok.Builder;

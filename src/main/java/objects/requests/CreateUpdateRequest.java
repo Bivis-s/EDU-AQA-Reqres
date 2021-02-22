@@ -1,12 +1,11 @@
-package objects.create_update;
+package objects.requests;
 
 import lombok.Builder;
 import lombok.Data;
 
 @Data
 @Builder
-public class UpdateResponse {
+public class CreateUpdateRequest {
     private String name;
     private String job;
-    private String updatedAt;
 }

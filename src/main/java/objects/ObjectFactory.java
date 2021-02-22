@@ -2,15 +2,15 @@ package objects;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import objects.create_update.CreateResponse;
-import objects.create_update.CreateUpdateRequest;
-import objects.create_update.UpdateResponse;
-import objects.register_login.EmailPasswordRequest;
-import objects.register_login.RegisterLoginResponse;
-import objects.resources.Resource;
-import objects.responses.DataListResponse;
-import objects.responses.SingleDataResponse;
-import objects.users.User;
+import objects.requests.CreateUpdateRequest;
+import objects.requests.EmailPasswordRequest;
+import objects.responses.data_containing.DataListResponse;
+import objects.responses.data_containing.data.Resource;
+import objects.responses.data_containing.SingleDataResponse;
+import objects.responses.data_containing.data.User;
+import objects.responses.no_data.CreateResponse;
+import objects.responses.no_data.RegisterLoginResponse;
+import objects.responses.no_data.UpdateResponse;
 
 import java.io.File;
 import java.io.FileNotFoundException;

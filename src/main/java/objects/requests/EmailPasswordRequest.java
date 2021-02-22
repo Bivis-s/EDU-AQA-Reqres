@@ -1,4 +1,4 @@
-package objects.register_login;
+package objects.requests;
 
 import lombok.Builder;
 import lombok.Data;

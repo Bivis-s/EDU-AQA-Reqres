@@ -4,16 +4,17 @@ import com.google.gson.reflect.TypeToken;
 import io.qameta.allure.Step;
 import io.restassured.response.Response;
 import lombok.extern.log4j.Log4j2;
-import objects.create_update.CreateResponse;
-import objects.create_update.CreateUpdateRequest;
-import objects.create_update.UpdateResponse;
-import objects.register_login.EmailPasswordRequest;
-import objects.register_login.RegisterLoginResponse;
-import objects.resources.Resource;
-import objects.responses.DataListResponse;
-import objects.response_container.ResponseContainer;
-import objects.responses.SingleDataResponse;
-import objects.users.User;
+import objects.responses.ResponseData;
+import objects.responses.data_containing.DataListResponse;
+import objects.responses.data_containing.SingleDataResponse;
+import objects.responses.data_containing.data.Resource;
+import objects.responses.data_containing.data.User;
+import objects.responses.no_data.CreateResponse;
+import objects.requests.CreateUpdateRequest;
+import objects.responses.no_data.UpdateResponse;
+import objects.requests.EmailPasswordRequest;
+import objects.responses.no_data.RegisterLoginResponse;
+import objects.responses.ResponseContainer;
 
 import static adapters.ReqresValues.*;
 import static objects.ObjectFactory.createDataUserList;
@@ -126,7 +127,7 @@ public class ReqresAdapter extends BaseAdapter {
      * @return ResponseContainer containing only response status code (data field is always null)
      */
     @Step("Delete user, id: '{userId}'")
-    public ResponseContainer<Object> deleteUser(int userId) {
+    public ResponseContainer<ResponseData> deleteUser(int userId) {
         log.info("Delete user, id: " + userId);
         Response response = super.delete(String.format(MANIPULATE_USER_REQUEST_URL, userId));
         return new ResponseContainer<>(response.getStatusCode(), null);

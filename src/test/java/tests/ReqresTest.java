@@ -8,7 +8,8 @@ import org.testng.annotations.Test;
 import java.io.FileNotFoundException;
 
 import static objects.ObjectFactory.*;
-import static utilities.assertionUtilities.*;
+import static utilities.AssertionUtilities.assertResponseBodyData;
+import static utilities.AssertionUtilities.assertResponseStatusCode;
 import static values.Values.*;
 
 public class ReqresTest {
@@ -77,4 +78,50 @@ public class ReqresTest {
     public void getSingleResourceWithNoExistingIdResponseStatusCodeTest() {
         assertResponseStatusCode(adapter.getResource(23), EXPECTED_SINGLE_RESOURCE_NOT_FOUND_STATUS_CODE);
     }
+
+    @Test(description = "Send post create user request and assert response status code test", groups = "positive")
+    public void postCreateUserResponseStatusCodeTest() throws FileNotFoundException {
+        assertResponseStatusCode(adapter.postCreateUser(createCreateUpdateRequest(CREATE_REQUEST_JSON)),
+                EXPECTED_CREATE_STATUS_CODE);
+    }
+
+    @Test(description = "Send put update user id = 2 request and assert response status code test",
+            groups = "positive")
+    public void putUpdateUserResponseStatusCodeTest() throws FileNotFoundException {
+        assertResponseStatusCode(adapter.putUpdateUser(createCreateUpdateRequest(UPDATE_REQUEST_JSON), 2),
+                EXPECTED_UPDATE_STATUS_CODE);
+    }
+
+    @Test(description = "Send patch update user id = 2 request and assert response status code test",
+            groups = "positive")
+    public void patchUpdateUserResponseStatusCodeTest() throws FileNotFoundException {
+        assertResponseStatusCode(adapter.patchUpdateUser(createCreateUpdateRequest(UPDATE_REQUEST_JSON), 2),
+                EXPECTED_UPDATE_STATUS_CODE);
+    }
+
+    @Test(description = "Send delete user id = 2 request and assert response status code test", groups = "positive")
+    public void deleteUserResponseStatusCodeTest() {
+        assertResponseStatusCode(adapter.deleteUser(2), EXPECTED_DELETE_STATUS_CODE);
+    }
+
+    @Test(description = "Register with valid data and assert response status code test", groups = "positive")
+    public void registerWithValidDataResponseStatusCodeTest() throws FileNotFoundException {
+        assertResponseStatusCode(adapter.postRegister(createEmailPasswordRequest(REGISTER_SUCCESSFUL_REQUEST_JSON)),
+                EXPECTED_REGISTER_SUCCESSFUL_STATUS_CODE);
+    } //TODO ПОЧЕМУ НЕ РАБОТАЕТ?
+
+    @Test(description = "Register with valid data and assert response body test", groups = "positive")
+    public void registerWithValidDataResponseBodyTest() throws FileNotFoundException {
+        assertResponseBodyData(adapter
+                        .postRegister(createEmailPasswordRequest(REGISTER_SUCCESSFUL_REQUEST_JSON)).getData(),
+                createRegisterLoginResponse(EXPECTED_REGISTER_RESPONSE_JSON));
+    } //TODO ПОЧЕМУ НЕ РАБОТАЕТ?
+
+    @Test(description = "Register without password data and assert response status code test", groups = "negative")
+    public void registerWithoutPasswordResponseStatusCodeTest() throws FileNotFoundException {
+        assertResponseStatusCode(adapter.postRegister(createEmailPasswordRequest(REGISTER_UNSUCCESSFUL_REQUEST_JSON)),
+                EXPECTED_REGISTER_UNSUCCESSFUL_STATUS_CODE);
+    }
+
+
 }
