@@ -3,6 +3,7 @@ package tests;
 import adapters.ReqresAdapter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import java.io.FileNotFoundException;
@@ -12,15 +13,16 @@ import static utilities.AssertionUtilities.assertResponseBodyData;
 import static utilities.AssertionUtilities.assertResponseStatusCode;
 import static values.Values.*;
 
+@Listeners(LogListener.class)
 public class ReqresTest {
     private ReqresAdapter adapter;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void initAdapter() {
         adapter = new ReqresAdapter();
     }
 
-    @AfterMethod
+    @AfterMethod(alwaysRun = true)
     public void waitAfterMethod() throws InterruptedException {
         Thread.sleep(350);
     }
