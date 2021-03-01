@@ -1,6 +1,7 @@
 package tests;
 
 import adapters.ReqresAdapter;
+import listeners.LogListener;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Listeners;
@@ -24,6 +25,7 @@ public class ReqresTest {
 
     @AfterMethod(alwaysRun = true)
     public void waitAfterMethod() throws InterruptedException {
+        // wait time after test method for not to overload the tested service
         Thread.sleep(350);
     }
 

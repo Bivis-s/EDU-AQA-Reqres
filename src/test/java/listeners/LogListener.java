@@ -1,4 +1,4 @@
-package tests;
+package listeners;
 
 import io.qameta.allure.Attachment;
 import io.restassured.RestAssured;
